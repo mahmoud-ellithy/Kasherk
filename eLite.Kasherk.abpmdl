@@ -1,0 +1,80 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.1.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.1.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.1.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.1.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "9.1.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.1.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.1.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.1.1",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {}
+    }
+  },
+  "packages": {
+    "eLite.Kasherk.Application": {
+      "path": "src/eLite.Kasherk.Application/eLite.Kasherk.Application.abppkg",
+      "folder": "src"
+    },
+    "eLite.Kasherk.Domain.Shared": {
+      "path": "src/eLite.Kasherk.Domain.Shared/eLite.Kasherk.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "eLite.Kasherk.Application.Contracts": {
+      "path": "src/eLite.Kasherk.Application.Contracts/eLite.Kasherk.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "eLite.Kasherk.HttpApi": {
+      "path": "src/eLite.Kasherk.HttpApi/eLite.Kasherk.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "eLite.Kasherk.HttpApi.Client": {
+      "path": "src/eLite.Kasherk.HttpApi.Client/eLite.Kasherk.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "eLite.Kasherk.EntityFrameworkCore": {
+      "path": "src/eLite.Kasherk.EntityFrameworkCore/eLite.Kasherk.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "eLite.Kasherk.DbMigrator": {
+      "path": "src/eLite.Kasherk.DbMigrator/eLite.Kasherk.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "eLite.Kasherk.HttpApi.Host": {
+      "path": "src/eLite.Kasherk.HttpApi.Host/eLite.Kasherk.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "eLite.Kasherk.Domain": {
+      "path": "src/eLite.Kasherk.Domain/eLite.Kasherk.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}
