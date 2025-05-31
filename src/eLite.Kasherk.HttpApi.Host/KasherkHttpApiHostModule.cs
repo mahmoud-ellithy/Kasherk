@@ -39,6 +39,7 @@ using Volo.Abp.OpenIddict;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.Studio.Client.AspNetCore;
 using Volo.Abp.Security.Claims;
+using Volo.Abp.MultiTenancy;
 
 namespace eLite.Kasherk;
 
@@ -109,6 +110,12 @@ public class KasherkHttpApiHostModule : AbpModule
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedProto;
             });
         }
+
+        Configure<AbpTenantResolveOptions>(options =>
+        {
+            options.TenantResolvers.Clear();
+            options.AddDomainTenantResolver("{0}.localhost:4200");
+        });
 
         ConfigureAuthentication(context);
         ConfigureUrls(configuration);

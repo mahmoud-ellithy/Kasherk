@@ -101,8 +101,8 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
                     "Impersonation"
                 },
                 scopes: commonScopes,
-                redirectUris: new List<string> { consoleAndAngularClientRootUrl },
-                postLogoutRedirectUris: new List<string> { consoleAndAngularClientRootUrl },
+                redirectUris: new List<string> { consoleAndAngularClientRootUrl, "http://tenant1.localhost:4200" },
+                postLogoutRedirectUris: new List<string> { consoleAndAngularClientRootUrl, "http://tenant1.localhost:4200" },
                 clientUri: consoleAndAngularClientRootUrl,
                 logoUri: "/images/clients/angular.svg"
             );
