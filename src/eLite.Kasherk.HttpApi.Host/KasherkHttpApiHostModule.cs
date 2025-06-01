@@ -40,6 +40,8 @@ using Volo.Abp.Swashbuckle;
 using Volo.Abp.Studio.Client.AspNetCore;
 using Volo.Abp.Security.Claims;
 using Volo.Abp.MultiTenancy;
+using Volo.Abp.TenantManagement;
+using Volo.Abp.TenantManagement.EntityFrameworkCore;
 
 namespace eLite.Kasherk;
 
@@ -114,7 +116,7 @@ public class KasherkHttpApiHostModule : AbpModule
         Configure<AbpTenantResolveOptions>(options =>
         {
             options.TenantResolvers.Clear();
-            options.AddDomainTenantResolver("{0}.localhost:4200");
+            options.TenantResolvers.Add(new DomainTenantResolveContributor("{tenant}.localhost"));  
         });
 
         ConfigureAuthentication(context);

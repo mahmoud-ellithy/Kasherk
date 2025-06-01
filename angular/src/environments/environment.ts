@@ -3,7 +3,7 @@
 const baseUrl = 'http://{0}.localhost:4200';
 
 const oAuthConfig = {
-  issuer: 'https://localhost:44304/',
+  issuer: 'https://{0}.localhost:44304/',
   redirectUri: baseUrl,
   clientId: 'Kasherk_App',
   responseType: 'code',
@@ -20,7 +20,7 @@ export const environment = {
   oAuthConfig,
   apis: {
     default: {
-      url: 'https://localhost:44304',
+      url: 'https://{0}.localhost:44304',
       rootNamespace: 'eLite.Kasherk',
     },
     AbpAccountPublic: {
