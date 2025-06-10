@@ -27,7 +27,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "allowedCommonJsDependencies": ["chart.js", "js-sha256"],
+            "allowedCommonJsDependencies": ["chart.js", "js-sha256", "bezier-easing"],
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -68,7 +68,8 @@
                 "inject": true,
                 "bundleName": "bootstrap-icons"
               },
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/scss/style.scss"
             ],
             "scripts": []
           },

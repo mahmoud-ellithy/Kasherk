@@ -309,7 +309,7 @@
   dependencies:
     "@angular-eslint/bundled-angular-compiler" "19.0.2"
 
-"@angular/animations@^18.0.0 || ^19.0.0", "@angular/animations@^19.0.0", "@angular/animations@~19.1.0", "@angular/animations@19.1.8":
+"@angular/animations@^19.0.0", "@angular/animations@~19.1.0", "@angular/animations@19.1.8":
   version "19.1.8"
   resolved "https://registry.npmjs.org/@angular/animations/-/animations-19.1.8.tgz"
   integrity sha512-sxicBdNvqjoInqGnT4C3qBJ7G3/NilWIbBJB1SGgnk3eHBHX8DJH0D/kQKVfN1OSuAVPpRc1qqz2zpPbf3I8bA==
@@ -350,7 +350,7 @@
   optionalDependencies:
     lmdb "3.2.2"
 
-"@angular/cdk@^19.0.0", "@angular/cdk@>=15.0.0", "@angular/cdk@18.2.14":
+"@angular/cdk@^19.0.0", "@angular/cdk@>=15.0.0", "@angular/cdk@19.2.18":
   version "19.2.18"
   resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-19.2.18.tgz"
   integrity sha512-aGMHOYK/VV9PhxGTUDwiu/4ozoR/RKz8cimI+QjRxEBhzn4EPqjUDSganvlhmgS7cTN3+aqozdvF/GopMRJjLg==
@@ -381,7 +381,7 @@
     symbol-observable "4.0.0"
     yargs "17.7.2"
 
-"@angular/common@^18.0.0 || ^19.0.0", "@angular/common@^19.0.0", "@angular/common@^19.0.0 || ^20.0.0", "@angular/common@>=11.0.2", "@angular/common@>=14.0.0", "@angular/common@>=15.0.0", "@angular/common@>=5.0.0", "@angular/common@~19.1.0", "@angular/common@11 - 15", "@angular/common@19.1.8":
+"@angular/common@^19.0.0", "@angular/common@^19.0.0 || ^20.0.0", "@angular/common@>=11.0.2", "@angular/common@>=14.0.0", "@angular/common@>=15.0.0", "@angular/common@>=5.0.0", "@angular/common@~19.1.0", "@angular/common@11 - 15", "@angular/common@19.1.8":
   version "19.1.8"
   resolved "https://registry.npmjs.org/@angular/common/-/common-19.1.8.tgz"
   integrity sha512-JTErVPLOQ+S1AbzUzHvgwqreiYltKI2yBRVUaiKSvutuu5zRvePmw0Ybo49DygkU9IT0E+CN8EzXp1WtaUGXxQ==
@@ -409,14 +409,14 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^18.0.0 || ^19.0.0", "@angular/core@^19.0.0", "@angular/core@^19.0.0 || ^20.0.0", "@angular/core@>=11.0.2", "@angular/core@>=14.0.0", "@angular/core@>=15.0.0", "@angular/core@>=5.0.0", "@angular/core@~19.1.0", "@angular/core@11 - 15", "@angular/core@19.1.8":
+"@angular/core@^19.0.0", "@angular/core@^19.0.0 || ^20.0.0", "@angular/core@>=11.0.2", "@angular/core@>=14.0.0", "@angular/core@>=15.0.0", "@angular/core@>=5.0.0", "@angular/core@~19.1.0", "@angular/core@11 - 15", "@angular/core@19.1.8":
   version "19.1.8"
   resolved "https://registry.npmjs.org/@angular/core/-/core-19.1.8.tgz"
   integrity sha512-mhLQDpKNvg5ou15OMwAAqmdHnmms1c+2beShRj0+sKa8EdPC9Xrz0SFWuSEX6tUEtKbtRpaxKFczx/VtuOZ5OA==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@^18.0.0 || ^19.0.0", "@angular/forms@^19.0.0", "@angular/forms@>=5.0.0", "@angular/forms@~19.1.0":
+"@angular/forms@^19.0.0", "@angular/forms@^19.0.0 || ^20.0.0", "@angular/forms@>=5.0.0", "@angular/forms@~19.1.0":
   version "19.1.8"
   resolved "https://registry.npmjs.org/@angular/forms/-/forms-19.1.8.tgz"
   integrity sha512-APmeoMg2IIsdf29MfLr04kSAFDnlfyRmI0gIXn31mvO7pWJgcwEOMmCC7xTbvfXzwY8u0W5+iASwqQajhyx90w==
@@ -438,10 +438,10 @@
     fast-glob "3.3.3"
     yargs "^17.2.1"
 
-"@angular/material@^18.0.3":
-  version "18.2.14"
-  resolved "https://registry.npmjs.org/@angular/material/-/material-18.2.14.tgz"
-  integrity sha512-28pxzJP49Mymt664WnCtPkKeg7kXUsQKTKGf/Kl95rNTEdTJLbnlcc8wV0rT0yQNR7kXgpfBnG7h0ETLv/iu5Q==
+"@angular/material@^19.1.0":
+  version "19.2.18"
+  resolved "https://registry.npmjs.org/@angular/material/-/material-19.2.18.tgz"
+  integrity sha512-xxedRQ9u7aiUYVrHAxASLUxnofN29xaqEGhBcHLAfOsFXdDMwDe/2ly79iKufwEs5BFBm3nfhJoarXZ3+8pucQ==
   dependencies:
     tslib "^2.3.0"
 
@@ -452,7 +452,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/platform-browser@^18.0.0 || ^19.0.0", "@angular/platform-browser@^19.0.0", "@angular/platform-browser@>=11.0.2", "@angular/platform-browser@~19.1.0", "@angular/platform-browser@19.1.8":
+"@angular/platform-browser@^19.0.0", "@angular/platform-browser@^19.0.0 || ^20.0.0", "@angular/platform-browser@>=11.0.2", "@angular/platform-browser@~19.1.0", "@angular/platform-browser@19.1.8":
   version "19.1.8"
   resolved "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-19.1.8.tgz"
   integrity sha512-EPk3QVjvEiVpZiC/GiX18dmxpMyH6udqcLHh+dmYWYo3hUlxQCzRGzHg3hyaT5eaBL/8bjE6MkiDFlKchKRjEw==

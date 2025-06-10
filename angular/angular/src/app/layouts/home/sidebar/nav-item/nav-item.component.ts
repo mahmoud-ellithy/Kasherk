@@ -20,11 +20,12 @@ import {
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { MaterialModule } from 'src/app/material.module';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-nav-item',
   standalone: true,
-  imports: [TablerIconsModule, MaterialModule, CommonModule],
+  imports: [TablerIconsModule, MaterialModule, CommonModule, SharedModule],
   templateUrl: './nav-item.component.html',
   styleUrls: [],
   animations: [

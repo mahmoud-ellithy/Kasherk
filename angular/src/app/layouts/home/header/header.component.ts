@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   ViewEncapsulation,
+  OnInit,
 } from '@angular/core';
 import { CoreService } from 'src/app/services/core.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,6 +16,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { AppSettings } from 'src/app/config';
+import { ConfigStateService } from '@abp/ng.core';
+import { map } from 'rxjs/operators';
+
+interface LanguageInfo {
+  language: string;
+  code: string;
+  icon: string;
+  displayName?: string;
+}
 
 interface notifications {
   id: number;
@@ -54,7 +64,7 @@ interface apps {
   templateUrl: './header.component.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   @Input() showToggle = true;
   @Input() toggleChecked = false;
   @Output() toggleMobileNav = new EventEmitter<void>();
@@ -63,42 +73,68 @@ export class HeaderComponent {
 
   showFiller = false;
 
-  public selectedLanguage: any = {
+  public selectedLanguage: LanguageInfo = {
     language: 'English',
     code: 'en',
-    type: 'US',
     icon: '/assets/images/flag/icon-flag-en.svg',
   };
 
-  public languages: any[] = [
-    {
-      language: 'English',
-      code: 'en',
-      type: 'US',
-      icon: '/assets/images/flag/icon-flag-en.svg',
-    },
-    {
-      language: 'Español',
-      code: 'es',
-      icon: '/assets/images/flag/icon-flag-es.svg',
-    },
-    {
-      language: 'Français',
-      code: 'fr',
-      icon: '/assets/images/flag/icon-flag-fr.svg',
-    },
-    {
-      language: 'German',
-      code: 'de',
-      icon: '/assets/images/flag/icon-flag-de.svg',
-    },
-  ];
+  public languages: LanguageInfo[] = [];
 
   constructor(
     private settings: CoreService,
     private vsidenav: CoreService,
     public dialog: MatDialog,
-  ) {
+    private configState: ConfigStateService
+  ) {}
+
+  ngOnInit() {
+    this.loadLanguages();
+  }
+
+  private loadLanguages() {
+    this.configState.getDeep$('localization.languages')
+      .pipe(
+        map((languages: any[]) => {
+          if (!languages || !Array.isArray(languages)) return [];
+          
+          return languages.map(lang => ({
+            language: lang.displayName || lang.cultureName,
+            code: lang.cultureName,
+            icon: this.getFlagIcon(lang.cultureName),
+            displayName: lang.displayName
+          }));
+        })
+      )
+      .subscribe(languages => {
+        if (languages && languages.length > 0) {
+          this.languages = languages;
+          
+          // Set the selected language based on current culture
+          const currentLang = this.configState.getDeep('localization.currentCulture.cultureName');
+          if (currentLang) {
+            const lang = this.languages.find(l => l.code === currentLang);
+            if (lang) this.selectedLanguage = lang;
+          }
+        }
+      });
+  }
+
+  private getFlagIcon(cultureName: string): string {
+    if (!cultureName) return '/assets/images/flag/icon-flag-en.svg';
+    
+    // Map culture names to flag icons
+    const flagMap: {[key: string]: string} = {
+      'en': '/assets/images/flag/icon-flag-en.svg',
+      'ar': '/assets/images/flag/icon-flag-sa.svg',
+      'fr': '/assets/images/flag/icon-flag-fr.svg',
+      'de': '/assets/images/flag/icon-flag-de.svg',
+      'es': '/assets/images/flag/icon-flag-es.svg',
+      // Add more mappings as needed
+    };
+    
+    const baseName = cultureName.split('-')[0];
+    return flagMap[baseName] || '/assets/images/flag/icon-flag-en.svg';
   }
 
   options = this.settings.getOptions();
@@ -115,8 +151,18 @@ export class HeaderComponent {
     });
   }
 
-  changeLanguage(lang: any): void {
+  changeLanguage(lang: LanguageInfo): void {
     this.selectedLanguage = lang;
+    
+    // Change the language using ABP's ConfigStateService
+    this.configState.refreshAppState().subscribe(() => {
+      const currentLang = this.configState.getDeep('localization.currentCulture.cultureName');
+      if (currentLang !== lang.code) {
+        // Update the language in localStorage and reload the page
+        localStorage.setItem('currentLanguage', lang.code);
+        window.location.reload();
+      }
+    });
   }
 
   notifications: notifications[] = [

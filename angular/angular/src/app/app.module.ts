@@ -17,6 +17,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_ROUTE_PROVIDER } from './route.provider';
 
+// icons
+import { TablerIconsModule } from 'angular-tabler-icons';
+import * as TablerIcons from 'angular-tabler-icons/icons';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,8 +29,7 @@ import { APP_ROUTE_PROVIDER } from './route.provider';
     AppRoutingModule,
     ThemeSharedModule,
     CoreModule,
-    ThemeLeptonXModule.forRoot(),
-    SideMenuLayoutModule.forRoot(),
+    TablerIconsModule.pick(TablerIcons),
   ],
   providers: [
     APP_ROUTE_PROVIDER,
