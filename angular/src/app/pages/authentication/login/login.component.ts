@@ -12,7 +12,7 @@ import { MaterialModule } from '../../../material.module';
 import {MatButtonModule} from '@angular/material/button';
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   standalone: true,
   imports: [
     RouterModule,
@@ -23,7 +23,7 @@ import {MatButtonModule} from '@angular/material/button';
   ],
   templateUrl: './login.component.html',
 })
-export class AppSideLoginComponent {
+export class LoginComponent {
   options = this.settings.getOptions();
 
   constructor(private settings: CoreService, private router: Router) {}
