@@ -1,22 +1,37 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { SharedModule } from '../../shared/shared.module';
 import { MaterialModule } from 'src/app/material.module';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CoreModule } from '@abp/ng.core';
+import { ACCOUNT_CONFIG_OPTIONS, AccountModule } from '@abp/ng.account';
+
+const routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  }
+];
 
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
+  declarations: [LoginComponent],
   imports: [
-    SharedModule,
-    FormsModule,
+    CommonModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
+    CoreModule,
     MaterialModule,
-    RouterModule
+    // AccountModule,
+    RouterModule.forChild(routes),
+  ],
+  providers: [
+    {
+      provide: ACCOUNT_CONFIG_OPTIONS,
+      useValue: {
+        redirectUrl: '/',  // or your desired redirect URL after login
+        loginUrl: '/account/login'
+      }
+    }
   ]
 })
-export class AuthenticationModule { }
+export class AuthenticationModule {}
