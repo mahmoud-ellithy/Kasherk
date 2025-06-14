@@ -5,31 +5,35 @@ import { LoginComponent } from './pages/authentication/login/login.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: 'account/login',
     component: LoginComponent,
   },
   {    
     path: '',
     pathMatch: 'full',
     loadChildren: () => import('./layouts/home/home.module').then(m => m.HomeModule),
+    canActivate: [authGuard],
   },
-  {
+  /*{
     path: 'account',
     loadChildren: () => import('@abp/ng.account').then(m => m.AccountModule.forLazy()),
-  },
+  },*/
   {
     path: 'identity',
     loadChildren: () => import('@abp/ng.identity').then(m => m.IdentityModule.forLazy()),
+    canActivate: [authGuard],
   },
   {
     path: 'tenant-management',
     loadChildren: () =>
       import('@abp/ng.tenant-management').then(m => m.TenantManagementModule.forLazy()),
+    canActivate: [authGuard],
   },
   {
     path: 'setting-management',
     loadChildren: () =>
       import('@abp/ng.setting-management').then(m => m.SettingManagementModule.forLazy()),
+    canActivate: [authGuard],
   },
 ];
 
