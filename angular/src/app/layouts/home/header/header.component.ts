@@ -11,12 +11,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { navItems } from '../sidebar/sidebar-data';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { MaterialModule } from 'src/app/material.module';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { AppSettings } from 'src/app/config';
-import { ConfigStateService } from '@abp/ng.core';
+import { AuthService, ConfigStateService } from '@abp/ng.core';
 import { map } from 'rxjs/operators';
 
 interface LanguageInfo {
@@ -38,7 +38,7 @@ interface notifications {
 interface profiledd {
   id: number;
   title: string;
-  link: string;
+  action: () => void;
   new?: boolean;
 }
 
@@ -85,13 +85,21 @@ export class HeaderComponent implements OnInit {
     private settings: CoreService,
     private vsidenav: CoreService,
     public dialog: MatDialog,
-    private configState: ConfigStateService
+    private configState: ConfigStateService,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.loadLanguages();
   }
 
+  signOut() {
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['/account/login']);
+    });
+  }
+  
   private loadLanguages() {
     this.configState.getDeep$('localization.languages')
       .pipe(
@@ -212,28 +220,28 @@ export class HeaderComponent implements OnInit {
     {
       id: 1,
       title: 'My Profile',
-      link: '/',
+      action: () => this.router.navigate(['/account/profile']),
     },
     {
       id: 2,
       title: 'My Subscription',
-      link: '/',
+      action: () => this.router.navigate(['/account/subscription']),
     },
     {
       id: 3,
       title: 'My Invoice',
       new: true,
-      link: '/',
+      action: () => this.router.navigate(['/account/invoice']),
     },
     {
       id: 4,
       title: ' Account Settings',
-      link: '/',
+      action: () => this.router.navigate(['/account/settings']),
     },
     {
       id: 5,
       title: 'Sign Out',
-      link: '/authentication/login',
+      action: () => this.signOut(),
     },
   ];
 
