@@ -2,31 +2,18 @@ import { Component, inject, Injector, OnInit } from '@angular/core';
 import { CoreService } from 'src/app/services/core.service';
 import {
   Validators,
-  FormsModule,
-  ReactiveFormsModule,
   UntypedFormBuilder,
   UntypedFormGroup,
 } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
-import { MaterialModule } from '../../../material.module';
-import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 import { AuthService } from '@abp/ng.core';
 import { getRedirectUrl } from '@abp/ng.account';
-import { MatFormField } from '@angular/material/form-field';
 
 const { maxLength, required } = Validators;
 
 @Component({
   selector: 'login',
-  standalone: true,
-  imports: [
-    RouterModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatFormField,
-  ],
+  standalone: false,
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
