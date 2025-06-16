@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { AppSettings } from 'src/app/config';
-import { AuthService, ConfigStateService } from '@abp/ng.core';
+import { AuthService, ConfigStateService, CurrentUserDto } from '@abp/ng.core';
 import { map } from 'rxjs/operators';
 
 interface LanguageInfo {
@@ -71,6 +71,7 @@ export class HeaderComponent implements OnInit {
   @Output() toggleMobileFilterNav = new EventEmitter<void>();
   @Output() toggleCollapsed = new EventEmitter<void>();
 
+  currentUser: CurrentUserDto | undefined;
   showFiller = false;
 
   public selectedLanguage: LanguageInfo = {
@@ -92,6 +93,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.loadLanguages();
+    this.loadCurrentUser();
   }
 
   signOut() {
@@ -125,6 +127,13 @@ export class HeaderComponent implements OnInit {
             if (lang) this.selectedLanguage = lang;
           }
         }
+      });
+  }
+
+  private loadCurrentUser() {
+    this.configState.getDeep$('currentUser')
+      .subscribe((user: CurrentUserDto) => {
+        this.currentUser = user;
       });
   }
 

@@ -5,7 +5,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from '@abp/ng.core';
-import { ACCOUNT_CONFIG_OPTIONS, AccountModule } from '@abp/ng.account';
+import { ACCOUNT_CONFIG_OPTIONS } from '@abp/ng.account';
 
 const routes = [
   {
@@ -21,7 +21,6 @@ const routes = [
     ReactiveFormsModule,
     CoreModule,
     MaterialModule,
-    // AccountModule,
     RouterModule.forChild(routes),
   ],
   providers: [
