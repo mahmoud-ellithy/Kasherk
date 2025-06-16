@@ -210,7 +210,7 @@
     </div>
     <div class="p-x-32 p-b-16">
       @for(profile of profiledd; track profile.title) {
-      <a class="p-8 text-decoration-none d-block text-hover-primary" (click)="profile.action()">
+      <a class="p-8 text-decoration-none d-block text-hover-primary cursor-pointer" (click)="profile.action()">
         <div class="d-flex align-items-center">
           <h5 class="f-s-14 f-w-600 m-0 textprimary mat-subtitle-1 hover-text">
             {{ profile.title }}
