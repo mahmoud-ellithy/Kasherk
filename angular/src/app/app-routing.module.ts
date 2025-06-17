@@ -1,7 +1,6 @@
 import { authGuard, permissionGuard } from '@abp/ng.core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './pages/authentication/login/login.component';
 
 const routes: Routes = [
   {
@@ -34,6 +33,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('@abp/ng.setting-management').then(m => m.SettingManagementModule.forLazy()),
     canActivate: [authGuard],
+  },
+  {
+    path: 'pages',
+    loadChildren: () =>
+      import('./pages/pages.routes').then(
+        (m) => m.PagesRoutes
+      ),
   },
 ];
 
