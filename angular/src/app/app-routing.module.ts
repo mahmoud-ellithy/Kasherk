@@ -15,14 +15,13 @@ const routes: Routes = [
   },
   {
     path: '',
-    pathMatch: 'full',
     loadChildren: () => import('./layouts/home/home.module').then(m => m.HomeModule),
     canActivate: [authGuard],
   },
   {
     path: 'identity',
     loadChildren: () => import('@abp/ng.identity').then(m => m.IdentityModule.forLazy()),
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'tenant-management',
