@@ -229,7 +229,7 @@ export class HeaderComponent implements OnInit {
     {
       id: 1,
       title: 'My Profile',
-      action: () => this.router.navigate(['/account/profile']),
+      action: () => this.router.navigate(['/settings/profile']),
     },
     {
       id: 2,
