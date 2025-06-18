@@ -5,7 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'account',
-    loadChildren: () => import('./pages/authentication/authentication.module').then(m => m.AuthenticationModule),
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/authentication/authentication.module').then(m => m.AuthenticationModule),
+      },
+    ]
+    
   },
   {
     path: '',
@@ -13,10 +19,6 @@ const routes: Routes = [
     loadChildren: () => import('./layouts/home/home.module').then(m => m.HomeModule),
     canActivate: [authGuard],
   },
-  /*{
-    path: 'account',
-    loadChildren: () => import('@abp/ng.account').then(m => m.AccountModule.forLazy()),
-  },*/
   {
     path: 'identity',
     loadChildren: () => import('@abp/ng.identity').then(m => m.IdentityModule.forLazy()),
@@ -33,14 +35,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@abp/ng.setting-management').then(m => m.SettingManagementModule.forLazy()),
     canActivate: [authGuard],
-  },
-  {
-    path: 'pages',
-    loadChildren: () =>
-      import('./pages/pages.routes').then(
-        (m) => m.PagesRoutes
-      ),
-  },
+  }
 ];
 
 @NgModule({
