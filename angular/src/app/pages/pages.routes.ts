@@ -10,8 +10,12 @@ export const PagesRoutes: Routes = [
         path: 'profile',
         component: UserProfileComponent,
         data: {
-          title: 'Account Settings',
+          title: 'Profile Settings',
           breadcrumb: true,
+          urls: [
+            { title: 'Home', url: '/' },
+            { title: 'Profile Settings' },
+          ]
         },
         canActivate: [authGuard]
       }
